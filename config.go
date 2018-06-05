@@ -73,7 +73,6 @@ func (c *LConfig) parse(confFile string)error{
 			//section
 			section = string(line[1:len(line)-1])
 		default:
-			//key=value值
 			values := bytes.Split(line,[]byte{'='})
 			if len(values) != 2{
 				return fmt.Errorf("parse %s content has error.line:%s",confFile,string(line))
@@ -94,7 +93,6 @@ func (c *LConfig) addConfig(section,key,value string){
 	if _,ok := c.data[section];!ok{
 		c.data[section] = make(map[string]string)
 	}
-	//_,ok := c.data[section][key]
 	c.data[section][key] = value
 }
 
