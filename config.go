@@ -86,6 +86,9 @@ func (c *LConfig) parse(confFile string)error{
 	return nil
 }
 
+/**
+	添加一条配置信息
+ */
 func (c *LConfig) addConfig(section,key,value string){
 	if section == ""{
 		section = "default"
@@ -97,11 +100,17 @@ func (c *LConfig) addConfig(section,key,value string){
 }
 
 
-
+/**
+	返回string配置信息
+ */
 func (c *LConfig) String(key string)string{
 	return c.get(key)
 }
 
+
+/**
+	返回[]string配置信息
+ */
 func (c *LConfig) Strings(key string,split ...string)([]string,error){
 	var sp = ","
 	value := c.get(key)
@@ -114,6 +123,9 @@ func (c *LConfig) Strings(key string,split ...string)([]string,error){
 	return strings.Split(value,sp),nil
 }
 
+/**
+	返回int配置信息
+ */
 func (c *LConfig) Int(key string)(int,error){
 
 	value := c.get(key)
